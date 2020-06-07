@@ -1,0 +1,85 @@
+cabal-version: 2.2
+
+name:         poly-source
+version:      0.1.0.0
+synopsis:     The essential components for manipulating source in the poly-lang compiler.
+description:  Source, Location, Position, Range, and Span information for managing source files in the poly-lang compiler.
+bug-reports:  https://github.com/riz0id/poly-source/issues
+license:      BSD-3-Clause
+license-file: LICENSE
+author:       Jacob Leach
+maintainer:   jacob@z-tech.org
+copyright:    Copyright (C) 2020-2022 Jacob D. Leach
+category:     Poly
+build-type:   Simple
+
+tested-with:
+  GHC == 8.8.3
+
+extra-source-files:
+  README.md
+  CHANGELOG.md
+  LICENSE
+
+common common
+  default-language: Haskell2010
+  ghc-options:
+    -Weverything
+    -Wno-all-missed-specialisations
+    -Wno-implicit-prelude
+    -Wno-missed-specialisations
+    -Wno-missing-import-lists
+    -Wno-missing-local-signatures
+    -Wno-monomorphism-restriction
+    -Wno-name-shadowing
+    -Wno-safe
+    -Wno-unsafe
+  if (impl(ghc >= 8.8))
+    ghc-options: -Wno-missing-deriving-strategies
+
+library
+  import:           common
+  hs-source-dirs:   src
+  default-language: Haskell2010
+
+  exposed-modules:
+      Data.Source
+
+  other-modules:
+      Data.Source.Loc
+    , Data.Source.Pos
+    , Data.Source.Range
+    , Data.Source.Span
+    , Control.Lens
+
+  build-depends:
+      base       >=4.13 && <4.14
+    , bytestring >= 0.10.10.0
+
+test-suite doctest
+  import:         common
+  type:           exitcode-stdio-1.0
+  main-is:        Doctest.hs
+  hs-source-dirs: test
+  build-depends:
+      base
+    , doctest     >= 0.7 && <1.0
+    , QuickCheck
+    , poly-source
+
+test-suite test
+  import:         common
+  type:           exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is:        Test.hs
+  build-depends:
+      base
+    , poly-source
+    , hedgehog       >= 1.0.2
+    , tasty          >= 1.3.1
+    , tasty-hedgehog >= 1.0.0.2
+    , tasty-hunit    >= 0.10.0.2
+
+source-repository head
+  type:     git
+  location: https://github.com/riz0id/poly-source

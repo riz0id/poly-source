@@ -1,0 +1,4 @@
+packages: .
+
+package poly-source
+  ghc-options: -Werror
