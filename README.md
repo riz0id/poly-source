@@ -1,3 +1,4 @@
+![Haskell CI](https://github.com/riz0id/poly-source/workflows/Haskell%20CI/badge.svg)
 
 # poly-source
 
