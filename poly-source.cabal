@@ -76,7 +76,7 @@ test-suite test
       base
     , poly-source
     , hedgehog       ^>= 1
-    , tasty          ^>= 1.3
+    , tasty          ^>= 1.2
     , tasty-hedgehog ^>= 1
     , tasty-hunit    ^>= 0.10
 
