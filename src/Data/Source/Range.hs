@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveGeneric         #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 
--- | Module    :  Parser.Token
+-- | Module    :  Data.Source.Range
 -- Copyright   :  (c) Jacob Leach, 2020 - 2022
 -- License     :  see LICENSE
 --

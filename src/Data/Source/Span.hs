@@ -2,7 +2,7 @@
 {-# LANGUAGE FunctionalDependencies #-}
 {-# LANGUAGE MultiParamTypeClasses  #-}
 
--- | Module    :  Parser.Token
+-- | Module    :  Data.Source.Span
 -- Copyright   :  (c) Jacob Leach, 2020 - 2022
 -- License     :  see LICENSE
 --

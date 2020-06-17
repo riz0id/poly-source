@@ -1,5 +1,5 @@
 
--- | Module    :  Parser.Token
+-- | Module    :  Data.Source.Delta
 -- Copyright   :  (c) Jacob Leach, 2020 - 2022
 -- License     :  see LICENSE
 --

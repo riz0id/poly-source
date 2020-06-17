@@ -1,9 +1,17 @@
 {-# LANGUAGE DeriveGeneric              #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
--- | A source file and the components to manage those.
+-- | Module    :  Data.Source
+-- Copyright   :  (c) Jacob Leach, 2020 - 2022
+-- License     :  see LICENSE
 --
--- @since 0.1.0.0
+-- Maintainer  :  leach.d.jake@gmail.com
+-- Stability   :  stable
+-- Portability :  non-portable
+--
+-- File offset information.
+--
+-- @since 0.1.0.1
 
 module Data.Source
   ( -- * Sources
@@ -26,9 +34,12 @@ module Data.Source
   , Span
     -- ** Span Classes
   , HasSpanLike(..)
+    -- * Deltas
+  , Delta(..)
   ) where
 
 import qualified Data.ByteString   as B
+import           Data.Source.Delta
 import           Data.Source.Loc
 import           Data.Source.Pos
 import           Data.Source.Range

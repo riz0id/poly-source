@@ -1,7 +1,7 @@
 {-# LANGUAGE DeriveGeneric     #-}
 {-# LANGUAGE FlexibleInstances #-}
 
--- | Module    :  Parser.Token
+-- | Module    :  Data.Source.Loc
 -- Copyright   :  (c) Jacob Leach, 2020 - 2022
 -- License     :  see LICENSE
 --
