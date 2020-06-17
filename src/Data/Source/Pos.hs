@@ -1,11 +1,23 @@
 {-# LANGUAGE DeriveGeneric #-}
 
--- | Positions in a source file.
+-- | Module    :  Parser.Token
+-- Copyright   :  (c) Jacob Leach, 2020 - 2022
+-- License     :  see LICENSE
+--
+-- Maintainer  :  leach.d.jake@gmail.com
+-- Stability   :  stable
+-- Portability :  non-portable
+--
+-- Line and column positional information in a source file.
 --
 -- @since 0.1.0.0
 
 module Data.Source.Pos
-  ( Pos, HasPos(..)
+  ( Pos
+    -- ** Position Lenses
+  , HasPos(..)
+    -- ** Position Constructors
+  , emptyPos
   ) where
 
 import           Control.Lens
@@ -24,6 +36,14 @@ data Pos = Pos
       , Ord     -- ^ @since 0.1.0.0
       , Show    -- ^ @since 0.1.0.0
       )
+
+-- | Create a starting position of a file. Note that we index the first column
+-- of a file as column 0 for the sake of simplicity.\
+--
+-- @since 0.1.0.1
+emptyPos :: Pos
+emptyPos = Pos 0 0
+{-# INLINE emptyPos #-}
 
 -- | Classy-fields for record types which contain positions.
 --

@@ -1,7 +1,7 @@
 cabal-version: 2.2
 
 name:         poly-source
-version:      0.1.0.0
+version:      0.1.0.1
 synopsis:     The essential components for manipulating source in the poly-lang compiler.
 description:  Source, Location, Position, Range, and Span information for managing source files in the poly-lang compiler.
 bug-reports:  https://github.com/riz0id/poly-source/issues
@@ -50,6 +50,7 @@ library
     , Data.Source.Pos
     , Data.Source.Range
     , Data.Source.Span
+    , Data.Source.Delta
     , Control.Lens
 
   build-depends:

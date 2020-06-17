@@ -2,7 +2,15 @@
 {-# LANGUAGE FunctionalDependencies #-}
 {-# LANGUAGE MultiParamTypeClasses  #-}
 
--- | Spans over a source file.
+-- | Module    :  Parser.Token
+-- Copyright   :  (c) Jacob Leach, 2020 - 2022
+-- License     :  see LICENSE
+--
+-- Maintainer  :  leach.d.jake@gmail.com
+-- Stability   :  stable
+-- Portability :  non-portable
+--
+-- Spans over a source file.
 --
 -- @since 0.1.0.0
 

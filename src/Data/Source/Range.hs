@@ -1,8 +1,17 @@
 {-# LANGUAGE DeriveGeneric         #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 
--- | Range over a source file, this is different from a "Span" in that "Range"
+-- | Module    :  Parser.Token
+-- Copyright   :  (c) Jacob Leach, 2020 - 2022
+-- License     :  see LICENSE
+--
+-- Maintainer  :  leach.d.jake@gmail.com
+-- Stability   :  stable
+-- Portability :  non-portable
+--
+-- Range over a source file, this is different from a "Span" in that "Range"
 -- only carries two indicies for an interval over a source.
+--
 --
 -- @since 0.1.0.0
 

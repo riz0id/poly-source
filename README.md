@@ -11,6 +11,5 @@ cabal v2-build # build the library
 cabal v2-test  # build and run the tests
 ```
 
-
 [`src`]: https://github.com/riz0id/poly-source
 
