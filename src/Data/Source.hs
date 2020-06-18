@@ -78,15 +78,15 @@ null = B.null . bytes
 --
 -- @since 0.1.0.0
 totalRange :: Source -> Range
-totalRange = Range 0 . B.length . bytes
+totalRange = Range 0 . Delta . B.length . bytes
 
 -- | Slices the "Source" provided by a given "Range".
 --
 -- @since 0.1.0.0
 slice :: Source -> Range -> Source
 slice source range = taking $ dropping source where
-  dropping = drop (rangeStart range)
-  taking   = take (rangeLength range)
+  dropping = drop (unDelta (rangeStart range))
+  taking   = take (unDelta (rangeLength range))
 
 -- | Drops n bytes from the end of a "Source".
 --
