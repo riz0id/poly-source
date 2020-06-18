@@ -36,6 +36,8 @@ module Data.Source
   , HasSpanLike(..)
     -- * Deltas
   , Delta(..)
+    -- ** Delta Classes
+  , HasDelta(..)
   ) where
 
 import qualified Data.ByteString   as B

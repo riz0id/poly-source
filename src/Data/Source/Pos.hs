@@ -21,14 +21,15 @@ module Data.Source.Pos
   ) where
 
 import           Control.Lens
+import           Data.Source.Delta
 import           GHC.Generics
 
 -- | Column and line information for a arbitrary source file.
 --
 -- @since 0.1.0.0
 data Pos = Pos
-    { line   :: {-# UNPACK #-} !Int
-    , column :: {-# UNPACK #-} !Int
+    { line   :: {-# UNPACK #-} !Delta
+    , column :: {-# UNPACK #-} !Delta
     }
     deriving
       ( Eq      -- ^ @since 0.1.0.0
@@ -57,13 +58,13 @@ class HasPos a where
   -- | "Pos" lens for accessing the position's line.
   --
   -- @since 0.1.0.0
-  line' :: Lens' a Int
+  line' :: Lens' a Delta
   line' = pos' . line'
 
   -- | "Column" lens for accessing the position's column.
   --
   -- @since 0.1.0.0
-  column' :: Lens' a Int
+  column' :: Lens' a Delta
   column' = pos' . line'
 
 -- | @since 0.1.0.0
