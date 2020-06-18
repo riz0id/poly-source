@@ -25,7 +25,7 @@ module Data.Source
     -- ** Location Classes
   , HasSpan(..), HasRange(..)
     -- * Positions
-  , Pos
+  , Pos, emptyPos
     -- ** Position Classes
   , HasPos(..)
     -- * Ranges
