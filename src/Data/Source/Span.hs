@@ -1,6 +1,5 @@
 {-# LANGUAGE DeriveGeneric          #-}
 {-# LANGUAGE FunctionalDependencies #-}
-{-# LANGUAGE MultiParamTypeClasses  #-}
 
 -- | Module    :  Data.Source.Span
 -- Copyright   :  (c) Jacob Leach, 2020 - 2022
