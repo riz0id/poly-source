@@ -68,3 +68,4 @@ class HasRange a where
 -- | @since 0.1.0.0
 instance HasRange Loc where
   range' = lens range (\s t -> s { range = t })
+  {-# INLINE range' #-}

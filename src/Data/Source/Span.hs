@@ -38,6 +38,7 @@ data Span = Span
 -- | @since 0.1.0.0
 instance Semigroup Span where
   Span s1 e1 <> Span s2 e2 = Span (min s1 s2) (max e1 e2)
+  {-# INLINE (<>) #-}
 
 -- | Classy-fields for things with finite intervals.
 --

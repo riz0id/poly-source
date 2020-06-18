@@ -39,7 +39,7 @@ data Pos = Pos
       )
 
 -- | Create a starting position of a file. Note that we index the first column
--- of a file as column 0 for the sake of simplicity.\
+-- of a file as column 0 for the sake of simplicity.
 --
 -- @since 0.1.0.1
 emptyPos :: Pos
@@ -60,13 +60,16 @@ class HasPos a where
   -- @since 0.1.0.0
   line' :: Lens' a Delta
   line' = pos' . line'
+  {-# INLINE line' #-}
 
   -- | "Column" lens for accessing the position's column.
   --
   -- @since 0.1.0.0
   column' :: Lens' a Delta
   column' = pos' . line'
+  {-# INLINE column' #-}
 
 -- | @since 0.1.0.0
 instance HasPos Pos where
   pos' = id
+  {-# INLINE pos' #-}

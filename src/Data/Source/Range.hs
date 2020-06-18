@@ -20,6 +20,7 @@ module Data.Source.Range
   ) where
 
 import           Control.Lens
+import           Data.Source.Delta
 import           Data.Source.Span (HasSpanLike (..))
 import           GHC.Generics
 
@@ -27,8 +28,8 @@ import           GHC.Generics
 --
 -- @since 0.1.0.0
 data Range = Range
-    { rangeStart :: {-# UNPACK #-} !Int -- ^ The start of the "Range".
-    , rangeEnd   :: {-# UNPACK #-} !Int -- ^ The end of the "Range".
+    { rangeStart :: {-# UNPACK #-} !Delta -- ^ The start of the "Range".
+    , rangeEnd   :: {-# UNPACK #-} !Delta -- ^ The end of the "Range".
     }
     deriving
       ( Eq      -- ^ @since 0.1.0.0
@@ -40,9 +41,15 @@ data Range = Range
 -- | @since 0.1.0.0
 instance Semigroup Range where
   Range s1 e1 <> Range s2 e2 = Range (min s1 s2) (max e1 e2)
+  {-# INLINE (<>) #-}
+
+-- | @since 0.1.0.1
+instance Monoid Range where
+  mempty = Range 0 0
+  {-# INLINE mempty #-}
 
 -- | @since 0.1.0.0
-instance HasSpanLike Range Int where
+instance HasSpanLike Range Delta where
   start' = lens rangeStart (\s t -> s { rangeStart = t })
   {-# INLINE start' #-}
 
@@ -52,5 +59,5 @@ instance HasSpanLike Range Int where
 -- | Takes the length between beginning("start'") and end ("end'") of the range.
 --
 -- @since 0.1.0.0
-rangeLength :: Range -> Int
+rangeLength :: Range -> Delta
 rangeLength range = rangeEnd range - rangeStart range
