@@ -27,8 +27,8 @@ import           GHC.Generics
 --
 -- @since 0.1.0.0
 data Range = Range
-    { start :: {-# UNPACK #-} !Int -- ^ The start of the "Range".
-    , end   :: {-# UNPACK #-} !Int -- ^ The end of the "Range".
+    { rangeStart :: {-# UNPACK #-} !Int -- ^ The start of the "Range".
+    , rangeEnd   :: {-# UNPACK #-} !Int -- ^ The end of the "Range".
     }
     deriving
       ( Eq      -- ^ @since 0.1.0.0
@@ -43,14 +43,14 @@ instance Semigroup Range where
 
 -- | @since 0.1.0.0
 instance HasSpanLike Range Int where
-  start' = lens start (\s t -> s { start = t })
+  start' = lens rangeStart (\s t -> s { rangeStart = t })
   {-# INLINE start' #-}
 
-  end' = lens end (\s t -> s { end = t })
+  end' = lens rangeEnd (\s t -> s { rangeEnd = t })
   {-# INLINE end' #-}
 
 -- | Takes the length between beginning("start'") and end ("end'") of the range.
 --
 -- @since 0.1.0.0
 rangeLength :: Range -> Int
-rangeLength range = end range - start range
+rangeLength range = rangeEnd range - rangeStart range

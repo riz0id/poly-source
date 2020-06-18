@@ -14,7 +14,7 @@
 -- @since 0.1.0.0
 
 module Data.Source.Span
-  ( Span, HasSpanLike(..)
+  ( Span(..), HasSpanLike(..)
   ) where
 
 import           Control.Lens
@@ -25,8 +25,8 @@ import           GHC.Generics
 --
 -- @since 0.1.0.0
 data Span = Span
-    { start :: {-# UNPACK #-} !Pos
-    , end   :: {-# UNPACK #-} !Pos
+    { spanStart :: {-# UNPACK #-} !Pos
+    , spanEnd   :: {-# UNPACK #-} !Pos
     }
     deriving
       ( Eq      -- ^ @since 0.1.0.0
@@ -55,8 +55,8 @@ class HasSpanLike a b | a -> b where
 
 -- | @since 0.1.0.0
 instance HasSpanLike Span Pos where
-  start' = lens start (\s t -> s { start = t })
+  start' = lens spanStart (\s t -> s { spanStart = t })
   {-# INLINE start' #-}
 
-  end' = lens end (\s t -> s { end = t })
+  end' = lens spanEnd (\s t -> s { spanEnd = t })
   {-# INLINE end' #-}

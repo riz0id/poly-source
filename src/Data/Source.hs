@@ -31,7 +31,7 @@ module Data.Source
     -- * Ranges
   , Range(..), rangeLength
     -- * Spans
-  , Span
+  , Span(..)
     -- ** Span Classes
   , HasSpanLike(..)
     -- * Deltas
@@ -85,7 +85,7 @@ totalRange = Range 0 . B.length . bytes
 -- @since 0.1.0.0
 slice :: Source -> Range -> Source
 slice source range = taking $ dropping source where
-  dropping = drop (start range)
+  dropping = drop (rangeStart range)
   taking   = take (rangeLength range)
 
 -- | Drops n bytes from the end of a "Source".
