@@ -14,7 +14,7 @@
 -- @since 0.1.0.0
 
 module Data.Source.Span
-  ( Span(..), HasSpanLike(..)
+  ( Span(..), HasInterval(..), HasSpan(..)
   ) where
 
 import           Control.Lens
@@ -40,10 +40,23 @@ instance Semigroup Span where
   Span s1 e1 <> Span s2 e2 = Span (min s1 s2) (max e1 e2)
   {-# INLINE (<>) #-}
 
+-- | @since 0.1.0.0
+instance Monoid Span where
+  mempty = Span (Pos 0 0) (Pos 0 0)
+
+-- | Classy-fields for record types which contain "Span"
+--
+-- @since 0.1.0.0
+class HasSpan a where
+  -- | "Span" lens
+  --
+  -- @since 0.1.0.0
+  span' :: Lens' a Span
+
 -- | Classy-fields for things with finite intervals.
 --
 -- @since 0.1.0.0
-class HasSpanLike a b | a -> b where
+class HasInterval a b | a -> b where
   -- | The beginning of a Span-like finite interval.
   --
   -- @since 0.1.0.0
@@ -55,7 +68,7 @@ class HasSpanLike a b | a -> b where
   end'   :: Lens' a b
 
 -- | @since 0.1.0.0
-instance HasSpanLike Span Pos where
+instance HasInterval Span Pos where
   start' = lens spanStart (\s t -> s { spanStart = t })
   {-# INLINE start' #-}
 

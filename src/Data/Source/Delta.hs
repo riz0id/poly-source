@@ -22,8 +22,10 @@ import Control.Lens
 -- | Delta is a newtype wrapper over offset information in the a file input.
 --
 -- @since 0.1.0.0
-data Delta = Delta { unDelta :: {-# UNPACK #-} !Int }
-  deriving (Eq, Ord, Show)
+data Delta = Delta
+    { unDelta :: {-# UNPACK #-} !Int
+    }
+    deriving (Eq, Ord, Show)
 
 -- | Additive monoid
 --

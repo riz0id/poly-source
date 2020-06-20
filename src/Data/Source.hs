@@ -20,12 +20,14 @@ module Data.Source
   , fromUTF8
     -- ** Slicing Sources
   , slice, take, drop
+    -- * Operations
+  , advanceStart, advanceEnd
     -- * Locations
-  , Loc
+  , Loc(..)
     -- ** Location Classes
   , HasSpan(..), HasRange(..)
     -- * Positions
-  , Pos, emptyPos
+  , Pos(..), emptyPos
     -- ** Position Classes
   , HasPos(..)
     -- * Ranges
@@ -33,13 +35,14 @@ module Data.Source
     -- * Spans
   , Span(..)
     -- ** Span Classes
-  , HasSpanLike(..)
+  , HasInterval(..)
     -- * Deltas
   , Delta(..)
     -- ** Delta Classes
   , HasDelta(..)
   ) where
 
+import           Control.Lens
 import qualified Data.ByteString   as B
 import           Data.Source.Delta
 import           Data.Source.Loc
@@ -99,3 +102,15 @@ drop i = Source . B.drop i . bytes
 -- @since 0.1.0.0
 take :: Int -> Source -> Source
 take i = Source . B.take i . bytes
+
+-- | Advance the starting position on an arbitrary interval.
+--
+-- @since 0.1.0.0
+advanceStart :: (Num b, HasInterval a b) => a -> a
+advanceStart x = x & start' +~ 1
+
+-- | Advance the ending position on an arbitrary interval.
+--
+-- @since 0.1.0.0
+advanceEnd :: (Num b, HasInterval a b) => a -> a
+advanceEnd x = x & end' +~ 1

@@ -1,7 +1,7 @@
 cabal-version: 2.2
 
 name:         poly-source
-version:      0.1.0.1
+version:      1.0.0.0
 synopsis:     The essential components for manipulating source in the poly-lang compiler.
 description:  Source, Location, Position, Range, and Span information for managing source files in the poly-lang compiler.
 bug-reports:  https://github.com/riz0id/poly-source/issues
@@ -51,11 +51,11 @@ library
     , Data.Source.Range
     , Data.Source.Span
     , Data.Source.Delta
-    , Control.Lens
 
   build-depends:
       base       >=4.13 && <4.14
     , bytestring >= 0.10.10.0
+    , lens       >= 4.19.2
 
 test-suite doctest
   import:         common
@@ -65,21 +65,9 @@ test-suite doctest
   build-depends:
       base
     , doctest     >= 0.7 && <1.0
+    , lens        >= 4.19.2
     , QuickCheck
     , poly-source
-
-test-suite test
-  import:         common
-  type:           exitcode-stdio-1.0
-  hs-source-dirs: test
-  main-is:        Test.hs
-  build-depends:
-      base
-    , poly-source
-    , hedgehog       ^>= 1
-    , tasty          ^>= 1.2
-    , tasty-hedgehog ^>= 1
-    , tasty-hunit    ^>= 0.10
 
 source-repository head
   type:     git

@@ -13,7 +13,7 @@
 -- @since 0.1.0.0
 
 module Data.Source.Pos
-  ( Pos
+  ( Pos(..)
     -- ** Position Lenses
   , HasPos(..)
     -- ** Position Constructors
@@ -28,8 +28,8 @@ import           GHC.Generics
 --
 -- @since 0.1.0.0
 data Pos = Pos
-    { line   :: {-# UNPACK #-} !Delta
-    , column :: {-# UNPACK #-} !Delta
+    { posLine   :: {-# UNPACK #-} !Delta
+    , posColumn :: {-# UNPACK #-} !Delta
     }
     deriving
       ( Eq      -- ^ @since 0.1.0.0

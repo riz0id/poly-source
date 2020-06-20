@@ -16,12 +16,16 @@
 -- @since 0.1.0.0
 
 module Data.Source.Range
-  ( Range(..), rangeLength
+  ( Range(..)
+    -- ** Range Classes
+  , HasRange(..)
+    -- ** Range Operations
+  , rangeLength
   ) where
 
 import           Control.Lens
 import           Data.Source.Delta
-import           Data.Source.Span (HasSpanLike (..))
+import           Data.Source.Span (HasInterval (..))
 import           GHC.Generics
 
 -- | An index range over a source file.
@@ -48,8 +52,17 @@ instance Monoid Range where
   mempty = Range 0 0
   {-# INLINE mempty #-}
 
+-- | Classy-fields for things with "Range"s.
+class HasRange a where
+  -- | Access the range from an arbitrary type.
+  range' :: Lens' a Range
+
 -- | @since 0.1.0.0
-instance HasSpanLike Range Delta where
+instance HasRange Range where
+  range' =  lens id (\_ t -> t)
+
+-- | @since 0.1.0.0
+instance HasInterval Range Delta where
   start' = lens rangeStart (\s t -> s { rangeStart = t })
   {-# INLINE start' #-}
 
