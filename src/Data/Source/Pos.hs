@@ -18,6 +18,7 @@ module Data.Source.Pos
   , HasPos(..)
     -- ** Position Constructors
   , emptyPos
+  , moveNewline, moveColumn
   ) where
 
 import           Control.Lens
@@ -31,12 +32,7 @@ data Pos = Pos
     { posLine   :: {-# UNPACK #-} !Delta
     , posColumn :: {-# UNPACK #-} !Delta
     }
-    deriving
-      ( Eq      -- ^ @since 0.1.0.0
-      , Generic -- ^ @since 0.1.0.0
-      , Ord     -- ^ @since 0.1.0.0
-      , Show    -- ^ @since 0.1.0.0
-      )
+    deriving (Eq, Generic, Ord, Show)
 
 -- | Create a starting position of a file. Note that we index the first column
 -- of a file as column 0 for the sake of simplicity.
@@ -73,3 +69,17 @@ class HasPos a where
 instance HasPos Pos where
   pos' = id
   {-# INLINE pos' #-}
+
+-- | Increment line and column information with respect to a new line.
+--
+-- @since 1.0.0.0
+moveNewline :: Pos -> Pos
+moveNewline p = p { posLine   = 0
+                  , posColumn = p^.column' + 1
+                  }
+
+-- | Increment the column information.
+--
+-- @since 1.0.0.0
+moveColumn :: Pos -> Pos
+moveColumn p = p & column' +~ 1
