@@ -30,6 +30,8 @@ module Data.Source
   , Pos(..), emptyPos
     -- ** Position Classes
   , HasPos(..)
+    -- * Pos Operations
+  , moveNewline, moveColumn
     -- * Ranges
   , Range(..), rangeLength
     -- * Spans
