@@ -77,7 +77,7 @@ moveNewline :: Pos -> Pos
 moveNewline p = p { posLine   = 0
                   , posColumn = p^.column' + 1
                   }
-{-# INLINE moveNewLine #-}
+{-# INLINE moveNewline #-}
 
 -- | Increment the column information.
 --
