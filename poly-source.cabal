@@ -57,18 +57,6 @@ library
     , bytestring >= 0.10.10.0
     , lens       >= 4.19.2
 
-test-suite doctest
-  import:         common
-  type:           exitcode-stdio-1.0
-  main-is:        Doctest.hs
-  hs-source-dirs: test
-  build-depends:
-      base
-    , doctest     >= 0.7 && <1.0
-    , lens        >= 4.19.2
-    , QuickCheck
-    , poly-source
-
 source-repository head
   type:     git
   location: https://github.com/riz0id/poly-source
